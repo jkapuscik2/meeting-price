@@ -1,0 +1,57 @@
+.app {
+    min-height: 90vh;
+}
+
+.app-header {
+    text-align: center;
+}
+
+.form-control {
+    background-color: #282c34;
+    color: white;
+    border-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 1px solid #ced4da;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+.form-control:focus {
+    background-color: #282c34;
+    color: white;
+    border-color: floralwhite;
+    box-shadow: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+.persons-list {
+    margin-top: 1rem;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-light:hover, .btn-light:active {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.fas {
+    color: white;
+    font-size: 1.1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.btn {
+    padding-top: 0;
+    padding-bottom: 0;
+}

@@ -30,12 +30,7 @@ export default class App extends Component {
             }
         ]
     };
-
-    constructor(props) {
-        super(props);
-
-        this.timerInterval = null;
-    }
+    timerInterval = null;
 
     startTimer = () => {
         clearInterval(this.timerInterval);

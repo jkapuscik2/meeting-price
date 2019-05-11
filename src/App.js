@@ -1,71 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
+import './App.css';
 import TriggerBtn from "./components/TriggerBtn"
 import Timer from "./components/Timer"
-import './App.css';
 import Persons from "./components/Persons";
 import TotalPrice from "./components/TotalPrice";
 import ResetBtn from "./components/ResetBtn";
 import HourPrice from "./components/HourPrice";
 
+
 // Assuming full time and 8h/day work
 const SEC_IN_MONTH = 60 * 60 * 8 * 20;
 const HOUR_IN_MONTH = 8 * 20;
 
-export default class App extends React.Component {
+export default class App extends Component {
+
+    state = {
+        timerStarted: false,
+        meetingPrice: 0,
+        secondsPassed: 0,
+        currency: "PLN",
+        personsPresent: [
+            {
+                "name": "Jon",
+                "salary": 20000
+            },
+            {
+                "name": "Johan",
+                "salary": 20000
+            }
+        ]
+    };
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            timerStarted: false,
-            meetingPrice: 0,
-            secondsPassed: 0,
-            currency: "PLN",
-            personsPresent: [
-                {
-                    "name": "Jon",
-                    "salary": 20000
-                },
-                {
-                    "name": "Johan",
-                    "salary": 20000
-                }
-            ]
-        };
         this.timerInterval = null;
     }
 
-    render() {
-        return (
-            <div className="container-fluid">
-                <div className="row app">
-                    <h1 className='col-12 text-center mt-5 pt-xl-5'>How much does your meeting cost?</h1>
-                    <div className="app-header col-12 col-xl-7">
-                        <div>
-                            <TriggerBtn timerStarted={this.state.timerStarted}
-                                        stopTimer={this.stopTimer.bind(this)}
-                                        startTimer={this.startTimer.bind(this)}/>
-                            <Timer secondsPassed={this.state.secondsPassed}/>
-                            <TotalPrice totalPrice={this.state.meetingPrice} currency={this.state.currency}/>
-                            <HourPrice hourPrice={this.countHourPrice()} currency={this.state.currency}/>
-                        </div>
-                    </div>
-
-                    <div className="side-form col-12 col-xl-5">
-                        <Persons
-                            personsPresent={this.state.personsPresent}
-                            addPerson={this.addPerson.bind(this)}
-                            removePerson={this.removePerson.bind(this)}
-                            salaryChange={this.salaryChange.bind(this)}
-                        />
-                    </div>
-                </div>
-                <ResetBtn onReset={this.resetTimer.bind(this)}/>
-            </div>
-        );
-    }
-
-    startTimer() {
+    startTimer = () => {
         clearInterval(this.timerInterval);
         this.setState({
             timerStarted: true
@@ -79,14 +51,14 @@ export default class App extends React.Component {
         }, 1000);
     }
 
-    stopTimer() {
+    stopTimer = () => {
         this.setState({
             timerStarted: false
         });
         clearInterval(this.timerInterval);
     }
 
-    resetTimer() {
+    resetTimer = () => {
         this.setState({
             timerStarted: false,
             secondsPassed: 0,
@@ -103,15 +75,15 @@ export default class App extends React.Component {
         return total;
     }
 
-    countSecPrice() {
+    countSecPrice = () => {
         return this.getMonthlyPrice() / SEC_IN_MONTH
     }
 
-    countHourPrice() {
+    countHourPrice = () => {
         return this.getMonthlyPrice() / HOUR_IN_MONTH
     }
 
-    addPerson(name, salary) {
+    addPerson = (name, salary) => {
         this.setState(
             {
                 personsPresent: [{name: name, salary: salary}, ...this.state.personsPresent]
@@ -119,7 +91,7 @@ export default class App extends React.Component {
         )
     }
 
-    salaryChange(newSalary, personIdx) {
+    salaryChange = (newSalary, personIdx) => {
         let personsPresent = [...this.state.personsPresent];
 
         personsPresent[personIdx] = {
@@ -132,7 +104,7 @@ export default class App extends React.Component {
         })
     }
 
-    removePerson(personIdx) {
+    removePerson = (personIdx) => {
         let personsPresent = [...this.state.personsPresent];
 
         personsPresent.splice(personIdx, 1)
@@ -142,4 +114,34 @@ export default class App extends React.Component {
         })
     }
 
+    render() {
+        return (
+            <div className="container-fluid">
+                <div className="row app">
+                    <h1 className='col-12 text-center mt-5 pt-xl-5 mb-3'>How much does your meeting cost?</h1>
+                    <div className="app-header col-12 col-xl-7">
+                        <div>
+                            <TriggerBtn timerStarted={this.state.timerStarted}
+                                        stopTimer={this.stopTimer}
+                                        startTimer={this.startTimer}/>
+                            <Timer secondsPassed={this.state.secondsPassed}/>
+                            <TotalPrice totalPrice={this.state.meetingPrice} currency={this.state.currency}/>
+                            <HourPrice hourPrice={this.countHourPrice()} currency={this.state.currency}/>
+                        </div>
+                    </div>
+
+                    <div className="side-form col-12 col-xl-5">
+                        <Persons
+                            personsPresent={this.state.personsPresent}
+                            addPerson={this.addPerson}
+                            removePerson={this.removePerson}
+                            salaryChange={this.salaryChange}
+                        />
+                    </div>
+                </div>
+                <ResetBtn onReset={this.resetTimer}/>
+            </div>
+
+        );
+    }
 }

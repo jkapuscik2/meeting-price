@@ -1,15 +1,11 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 export default class PersonsItem extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            name: this.props.name,
-            salary: this.props.salary
-        }
+    state = {
+        name: this.props.name,
+        salary: this.props.salary
     }
 
     render() {
@@ -45,4 +41,11 @@ export default class PersonsItem extends React.Component {
     removePerson() {
         this.props.removePerson(this.props.personIdx)
     }
+}
+
+PersonsItem.propTypes = {
+    name: PropTypes.string.isRequired,
+    salary: PropTypes.number.isRequired,
+    removePerson: PropTypes.func.isRequired,
+    salaryChange: PropTypes.func.isRequired
 }

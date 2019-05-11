@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 export default class StartBtn extends React.Component {
 
@@ -19,4 +19,8 @@ export default class StartBtn extends React.Component {
     formatDigit(digit) {
         return (digit < 10) ? "0" + digit : digit
     }
+}
+
+StartBtn.propTypes = {
+    secondsPassed: PropTypes.number.isRequired
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 export default class TotalPrice extends React.Component {
 
@@ -10,4 +10,9 @@ export default class TotalPrice extends React.Component {
             </h1>
         )
     }
+}
+
+TotalPrice.propTypes = {
+    totalPrice: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
 }

@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+const HourPrice = ({currency, hourPrice}) => (
+    <h3>
+        <strong>{Math.round(hourPrice * 100) / 100} {currency} / 1h</strong>
+    </h3>
+);
 
-export default class HourPrice extends React.Component {
+HourPrice.propTypes = {
+    currency: PropTypes.string.isRequired,
+    hourPrice: PropTypes.number.isRequired
+};
 
-    render() {
-        return (
-            <h3>
-                <strong>{Math.round(this.props.hourPrice * 100) / 100} {this.props.currency} / 1h</strong>
-            </h3>
-        )
-    }
-}
+export default HourPrice

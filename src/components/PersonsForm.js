@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class PersonsForm extends React.Component {
 
@@ -21,4 +22,8 @@ export default class PersonsForm extends React.Component {
 
         this.props.addPerson(data.get("name"), data.get("salary"));
     }
+}
+
+PersonsForm.propTypes = {
+    addPerson: PropTypes.func.isRequired
 }

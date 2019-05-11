@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const TriggerBtn = ({timerStarted, startTimer, stopTimer}) =>
+    <button className='btn btn-light btn-lg mb-5'
+            onClick={timerStarted ? stopTimer : startTimer}>{timerStarted ? 'Pause' : 'Start'}</button>
 
 
-export default class TriggerBtn extends React.Component {
-    render() {
-        if (this.props.timerStarted) {
-            return <button className='btn btn-light btn-lg mb-5' onClick={this.props.stopTimer}>Pause</button>
-        }else{
-            return <button className='btn btn-light btn-lg mb-5' onClick={this.props.startTimer}>Start</button>
-        }
-    }
+TriggerBtn.propTypes = {
+    timerStarted: PropTypes.bool.isRequired,
+    startTimer: PropTypes.func.isRequired,
+    stopTimer: PropTypes.func.isRequired
 }
+
+export default TriggerBtn

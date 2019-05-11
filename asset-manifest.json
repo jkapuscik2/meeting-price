@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/meeting-price/static/css/main.7526125b.chunk.css",
+    "main.js": "/meeting-price/static/js/main.827506cf.chunk.js",
+    "main.js.map": "/meeting-price/static/js/main.827506cf.chunk.js.map",
+    "runtime~main.js": "/meeting-price/static/js/runtime~main.56ac14d1.js",
+    "runtime~main.js.map": "/meeting-price/static/js/runtime~main.56ac14d1.js.map",
+    "static/js/2.a5adb38c.chunk.js": "/meeting-price/static/js/2.a5adb38c.chunk.js",
+    "static/js/2.a5adb38c.chunk.js.map": "/meeting-price/static/js/2.a5adb38c.chunk.js.map",
+    "index.html": "/meeting-price/index.html",
+    "precache-manifest.2cd456c1979cde8e273922b0ac7bfc82.js": "/meeting-price/precache-manifest.2cd456c1979cde8e273922b0ac7bfc82.js",
+    "service-worker.js": "/meeting-price/service-worker.js",
+    "static/css/main.7526125b.chunk.css.map": "/meeting-price/static/css/main.7526125b.chunk.css.map"
+  }
+}

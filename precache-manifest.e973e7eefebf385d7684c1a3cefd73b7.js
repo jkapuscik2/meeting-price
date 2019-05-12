@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "65349a765230fc93a5924e12e2092217",
+    "revision": "2b8ccef87eb34dc129c77b917ba8a76f",
     "url": "/meeting-price/index.html"
   },
   {
-    "revision": "73dcf356325b91c33f0b",
+    "revision": "764944e8521f063fc555",
     "url": "/meeting-price/static/css/main.7526125b.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/meeting-price/static/js/2.a5adb38c.chunk.js"
   },
   {
-    "revision": "73dcf356325b91c33f0b",
-    "url": "/meeting-price/static/js/main.827506cf.chunk.js"
+    "revision": "764944e8521f063fc555",
+    "url": "/meeting-price/static/js/main.2e04ff45.chunk.js"
   },
   {
     "revision": "af63da029f25b6f37801",

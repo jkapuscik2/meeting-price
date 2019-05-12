@@ -10,13 +10,17 @@ export default class PersonsForm extends React.Component {
         e.target.reset();
 
         this.props.addPerson(data.get("name"), data.get("salary"));
+        this.nameInput.focus();
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <input className='form-control col-5 d-inline'
-                       autoFocus
+                       autoFocus={true}
+                       ref={(input) => {
+                           this.nameInput = input;
+                       }}
                        type='text'
                        name='name'
                        required

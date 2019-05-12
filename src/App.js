@@ -4,8 +4,8 @@ import TriggerBtn from "./components/TriggerBtn"
 import Timer from "./components/Timer"
 import Persons from "./components/Persons";
 import TotalPrice from "./components/TotalPrice";
-import ResetBtn from "./components/ResetBtn";
 import HourPrice from "./components/HourPrice";
+import Footer from "./components/Footer";
 
 
 // Assuming full time and 8h/day work
@@ -31,6 +31,7 @@ export default class App extends Component {
         ]
     };
     timerInterval = null;
+    AVAILABLE_CURRENCIES = ["PLN", "USD", "EUR"];
 
     startTimer = () => {
         clearInterval(this.timerInterval);
@@ -41,7 +42,7 @@ export default class App extends Component {
             let secondsPassed = this.state.secondsPassed + 1;
             this.setState({
                 secondsPassed: secondsPassed,
-                meetingPrice: (parseFloat(this.state.meetingPrice) + this.countSecPrice()).toFixed(2)
+                meetingPrice: parseFloat((parseFloat(this.state.meetingPrice) + this.countSecPrice()).toFixed(2))
             })
         }, 1000);
     }
@@ -81,7 +82,7 @@ export default class App extends Component {
     addPerson = (name, salary) => {
         this.setState(
             {
-                personsPresent: [{name: name, salary: salary}, ...this.state.personsPresent]
+                personsPresent: [{name: name, salary: parseFloat(salary)}, ...this.state.personsPresent]
             }
         )
     }
@@ -106,6 +107,12 @@ export default class App extends Component {
 
         this.setState({
             personsPresent: personsPresent
+        })
+    }
+
+    changeCurrency = (newCurrency) => {
+        this.setState({
+            'currency': newCurrency
         })
     }
 
@@ -134,9 +141,12 @@ export default class App extends Component {
                         />
                     </div>
                 </div>
-                <ResetBtn onReset={this.resetTimer}/>
+                <Footer onReset={this.resetTimer}
+                        currency={this.state.currency}
+                        availableCurrencies={this.AVAILABLE_CURRENCIES}
+                        changeCurrency={this.changeCurrency}
+                />
             </div>
-
         );
     }
 }

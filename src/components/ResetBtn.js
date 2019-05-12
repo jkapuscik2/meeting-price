@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class ResetBtn extends React.Component {
     render() {
-        return <button className='btn btn-light float-right mt-4' onClick={this.props.onReset}>Reset time</button>
+        return <button className='btn btn-light mt-4 mr-4' onClick={this.props.onReset}>Reset time</button>
     }
 }
 
